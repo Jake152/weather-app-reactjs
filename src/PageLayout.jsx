@@ -1,11 +1,27 @@
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import LandingPage from './Pages/LandingPage/LandingPage';
+import TodayPage from './Pages/TodayPage/TodayPage';
+import WeatherHeader from './Components/WeatherHeader/WeatherHeader';
+import WeatherFooter from './Components/WeatherFooter/WeatherFooter';
+
 import './PageLayout.css';
 
-function PageLayout() {
+export default function PageLayout() {
   return (
-    <div id="weather-app-page-layout">
-      Weather App Initial Layout
-    </div>
+    <Router>
+      <div id='page-layout'>
+          <WeatherHeader />
+          <main id='main-content-container'>
+            <div id='main-content'>
+              <Routes>
+                <Route path='/' element={<LandingPage />} />
+                <Route path='/today' element={<TodayPage />} />
+              </Routes>
+            </div>
+          </main>
+          <WeatherFooter />
+      </div>
+    </Router>
   );
 }
-
-export default PageLayout;

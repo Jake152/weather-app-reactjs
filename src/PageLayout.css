@@ -1,3 +1,15 @@
-.weather-app-page-layout {
+#page-layout {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
     
+    #main-content-container {
+        background-color: #3f4552;
+        display: flex;
+        flex: 1;
+        
+        #main-content {
+            margin: 0 auto;
+        }
+    }
 }
