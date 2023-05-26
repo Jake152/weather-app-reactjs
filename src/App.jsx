@@ -5,18 +5,18 @@ function App() {
   return (
     <div className="weather-app">
       <header className="weather-app-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <span>Weather App</span>
+        <div id='github-info-container'>
+          <span>Creator Github: </span>
+          <a
+            className="github-link"
+            href="https://github.com/Jake152"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            github.com/Jake152
+          </a>
+        </div>
       </header>
     </div>
   );
