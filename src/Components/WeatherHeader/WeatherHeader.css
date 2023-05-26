@@ -1,0 +1,17 @@
+#weather-header-container {
+    background-color: #112e51;
+    height: 10vh;
+    width: 100%;
+    font-size: 2rem;
+    border-bottom: .125rem solid;
+    display: flex;
+
+
+    #weather-header-content {
+        width: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 0 auto;
+    }
+}

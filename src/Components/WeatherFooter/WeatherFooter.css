@@ -1,0 +1,20 @@
+#weather-footer-container {
+    background-color: #112e51;
+    height: 10vh;
+    width: 100%;
+    font-size: 2rem;
+    border-top: .125rem solid;
+    display: flex;
+
+    #weather-footer-content {
+        width: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 0 auto;
+
+        .github-link {
+            color: #61dafb;
+          }
+    }
+}

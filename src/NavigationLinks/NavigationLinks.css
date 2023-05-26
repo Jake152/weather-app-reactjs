@@ -1,0 +1,7 @@
+#navigation-links-container {
+    #navigation-links .link {
+        color: #61dafb;
+        margin: 1rem;
+        text-decoration: none;
+    }      
+}
