@@ -3,5 +3,8 @@
         color: #61dafb;
         margin: 1rem;
         text-decoration: none;
-    }      
+    }    
+    #navigation-links .link:hover {
+        text-decoration: underline;
+    }    
 }

@@ -5,7 +5,8 @@ import ForecastDropdown from "../Components/ForecastDropdown/ForecastDropdown";
 import './NavigationLinks.css';
 
 export default function NavigationLinks() {
-    // make Forecast a dropdown with (Today, hourly, 10 day, etc)
+    // make home be the current weather
+    // make Forecast a dropdown with (hourly, 3 day, 5 day)
     const renderNavigationLinks = () => (
         <nav id="navigation-links" >
             <Link className="link" to="/">
