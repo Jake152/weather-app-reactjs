@@ -1,0 +1,38 @@
+#current-weather-container {
+    #fetch-btn-container {
+        display: flex;
+        justify-content: center;
+        #fetch-btn {
+            background-color: white;
+            font-size: 1.5rem;
+            padding: 1rem;
+            border-radius: 10px;
+        }
+        #fetch-btn:hover {
+            background-color: lightgray;
+            cursor: pointer;
+        }
+        #fetch-btn:disabled {
+            opacity: 0.6;
+            cursor: default;
+        }
+    }
+    #current-temp-container {
+        border: .0625rem solid;
+        border-radius: 10px;
+        margin: 2rem 0rem;
+        #location-info {
+            font-size: 1.5rem;
+            border-bottom: .0625rem solid;
+            padding: .5rem;
+        }
+        #temperature-info {
+            font-size: 3rem;
+            padding: .5rem .5rem 0rem .5rem;
+        }
+        #weather-conditions {
+            font-size: 1.5rem;
+            padding: 0rem .5rem .5rem .5rem;
+        }
+    }
+}

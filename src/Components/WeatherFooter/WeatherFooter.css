@@ -15,6 +15,11 @@
 
         .github-link {
             color: #61dafb;
-          }
+            text-decoration: none;
+        }
+        .github-link:hover {
+            color: #61dafb;
+            text-decoration: underline;
+        }
     }
 }
