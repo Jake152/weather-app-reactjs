@@ -1,0 +1,5 @@
+#location-input-container {
+    #location-city-input, #location-state-input {
+        width: 25%;
+    }
+}
