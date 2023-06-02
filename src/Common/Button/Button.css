@@ -1,0 +1,16 @@
+.btn {
+    font-size: 3rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    background-color: white;
+    cursor: pointer;
+}
+
+.btn:disabled {
+    opacity: 0.6;
+    cursor: default;
+}
+  
+.btn:not(:disabled):hover {
+    background-color: lightgray;
+}
