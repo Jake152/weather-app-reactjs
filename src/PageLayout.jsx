@@ -9,8 +9,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './PageLayout.css';
 
 export default function PageLayout() {
-  const [city, setCity] = useState('');
-  const [state, setState] = useState('');
   const [latitude, setLatitude] = useState(localStorage.getItem('latitude') || '');
   const [longitude, setLongitude] = useState(localStorage.getItem('longitude') || '');
   const [currentGeolocationAccess, setCurrentGeolocationAccess] = useState(
@@ -75,7 +73,7 @@ export default function PageLayout() {
             <div id='main-content'>
               {!showModal && (
                 <Routes>
-                  <Route path='/' element={<HomePage latitude={latitude} longitude={longitude} city={city} state={state} />} />
+                  <Route path='/' element={<HomePage latitude={latitude} longitude={longitude} />} />
                 </Routes>
               )}
             </div>

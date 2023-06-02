@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { getCurrentWeatherByCoordinates, getLocationInformationByCity, getWeatherByLocation } from "../../Api/CurrentWeatherService";
-import { getCurrentTime, convertToTime } from "../../Utils/Utils";
+import { getCurrentWeatherByCoordinates, getWeatherByLocation } from "../../Api/CurrentWeatherService";
+import { convertToTime } from "../../Utils/Utils";
 
 import './CurrentWeather.css'
 
-export default function CurrentWeather({ latitude, longitude, city, state }) {
+export default function CurrentWeather({ latitude, longitude }) {
     const [locationData, setLocationData] = useState(null);
     const [weatherData, setWeatherData] = useState(null);
     const [error, setError] = useState(null);
