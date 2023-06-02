@@ -2,7 +2,7 @@
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    
+      
     #main-content-container {
         background-color: #3f4552;
         display: flex;
@@ -10,7 +10,14 @@
         
         #main-content {
             margin: 2rem auto;
-            width: 50%;
+            width: 75%;
         }
     }
+}
+
+.modal-dialog {
+    height: 100vh;
+    margin: auto;
+    display: flex;
+    align-items: center;
 }

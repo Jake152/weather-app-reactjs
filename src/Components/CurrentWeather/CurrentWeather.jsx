@@ -1,16 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { getLocationInformationByCity, getLocationKeyByCity, getWeatherByLocation } from "../../Api/locationService";
-import { getCurrentTime, convertToTime } from "../../Utils/Utils";
+import { getCurrentWeatherByCoordinates, getWeatherByLocation } from "../../Api/CurrentWeatherService";
+import { convertToTime } from "../../Utils/Utils";
 
 import './CurrentWeather.css'
 
-export default function CurrentWeather() {
+export default function CurrentWeather({ latitude, longitude }) {
     const [locationData, setLocationData] = useState(null);
     const [weatherData, setWeatherData] = useState(null);
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
-    const city = 'Lakeville';
-    const state = 'Minnesota';
 
     const renderCurrentTempSection = () => (
         <>
@@ -31,30 +29,30 @@ export default function CurrentWeather() {
     );
 
     const fetchWeatherData = async () => {
-        setIsLoading(true);
-        try {
-          const locationInformation = await(getLocationInformationByCity(city))
-    
-          if (locationInformation) {
-            setLocationData(locationInformation);
-            const locationKey = locationInformation.Key
-            const weatherData = await getWeatherByLocation(locationKey);
-    
-            if (weatherData) {
-              setWeatherData(weatherData);
-            } else {
-              setError('Error fetching weather data');
-            }
+      setIsLoading(true);
+      try {
+        const locationInformation = await getCurrentWeatherByCoordinates(latitude, longitude);
+  
+        if (locationInformation) {
+          setLocationData(locationInformation);
+          const locationKey = locationInformation.Key
+          const weatherData = await getWeatherByLocation(locationKey);
+  
+          if (weatherData) {
+            setWeatherData(weatherData);
           } else {
-            setError('Invalid API key or city not found');
+            setError('Error fetching weather data');
           }
-        } catch (error) {
-          console.log(error);
-          setError('Error occurred while fetching weather data');
-        } finally {
-          setIsLoading(false);
+        } else {
+          setError('Invalid API key or city not found');
         }
-    };
+      } catch (error) {
+        console.log(error);
+        setError('Error occurred while fetching weather data');
+      } finally {
+        setIsLoading(false);
+      }
+  };
 
     useEffect(() => {
         console.log('Location Data', locationData);
@@ -63,17 +61,24 @@ export default function CurrentWeather() {
     }, [locationData, weatherData]);
 
     useEffect(() => {
+      let isMounted = true;
+      if (isMounted) {
+        fetchWeatherData();
+      }
 
+      return () => {
+        isMounted = false;
+      }
     }, []);
 
     return (
         <div id="current-weather-container">
-            <div id="fetch-btn-container">
-                <button id="fetch-btn" onClick={fetchWeatherData} disabled={isLoading}>
-                    {isLoading ? 'Loading...' : 'Get Weather Data'}
-                </button>
-            </div>
-            {renderCurrentTempSection()}
+            {error && <div id="error-message">{error}</div>}
+            {isLoading ? (
+              <div id="loading-message">Loading...</div>
+            ) : (
+              renderCurrentTempSection()
+            )}
         </div>
     )
 }
