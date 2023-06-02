@@ -1,0 +1,34 @@
+#landing-page-container {
+    display: flex;
+    flex-direction: column;
+    #title-info-container, #github-information, #instructions-container, #location-input-container, #location-btn-container {
+        margin: .5rem;
+        display: flex;
+        justify-content: center;
+    }
+
+    #title-info-container {
+        font-size: 8rem;
+    }
+
+    #github-information {
+        font-size: 5rem;
+        margin-bottom: 10rem;
+        #github-label {
+            margin-right: .5rem;
+        }
+        .github-link {
+            color: #61dafb;
+            text-decoration: none;
+            margin-left: .5rem;
+        }
+        .github-link:hover {
+            color: #61dafb;
+            text-decoration: underline;
+        }
+    }
+
+    #instructions-container {
+        font-size: 3rem;
+    }
+}
