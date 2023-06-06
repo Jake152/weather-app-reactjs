@@ -17,7 +17,7 @@ export const getLocationInformationByCity = async (city) => {
 export const getCurrentWeatherByCoordinates = async (latitude, longitude) => {
     try {
       const response = await axios.get(
-        `http://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=${API_KEY}&q=${latitude},${longitude}`
+        `http://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=${API_KEY}&q=${latitude},${longitude}&details=true`
       );
       return response.data;
     } catch (error) {
@@ -29,7 +29,7 @@ export const getCurrentWeatherByCoordinates = async (latitude, longitude) => {
 export const getCurrentWeatherWithLocationKey = async (locationKey) => {
     try {
       const response = await axios.get(
-        `http://dataservice.accuweather.com/currentconditions/v1/${locationKey}?apikey=${API_KEY}`
+        `http://dataservice.accuweather.com/currentconditions/v1/${locationKey}?apikey=${API_KEY}&details=true`
       );
       return response.data[0];
     } catch (error) {
@@ -41,9 +41,9 @@ export const getCurrentWeatherWithLocationKey = async (locationKey) => {
 export const getOneDayWeatherWithLocationKey = async (locationKey) => {
     try {
       const response = await axios.get(
-        `http://dataservice.accuweather.com/forecasts/v1/daily/1day/${locationKey}?apikey=${API_KEY}`
+        `http://dataservice.accuweather.com/forecasts/v1/daily/1day/${locationKey}?apikey=${API_KEY}&details=true`
       );
-      return response.data;
+      return response.data.DailyForecasts[0];
     } catch (error) {
       console.log(error);
       return null;
@@ -53,7 +53,19 @@ export const getOneDayWeatherWithLocationKey = async (locationKey) => {
 export const getHourlyForecastWithLocationKey = async (locationKey) => {
     try {
       const response = await axios.get(
-        `http://dataservice.accuweather.com/forecasts/v1/hourly/12hour/${locationKey}?apikey=${API_KEY}`
+        `http://dataservice.accuweather.com/forecasts/v1/hourly/12hour/${locationKey}?apikey=${API_KEY}&details=true`
+      );
+      return response.data;
+    } catch (error) {
+      console.log(error);
+      return null;
+    }
+  };
+
+export const getHourForecastWithLocationKey = async (locationKey) => {
+    try {
+      const response = await axios.get(
+        `http://dataservice.accuweather.com/forecasts/v1/hourly/1hour/${locationKey}?apikey=${API_KEY}&details=true`
       );
       return response.data;
     } catch (error) {
@@ -66,10 +78,10 @@ export const getOneDayWeatherPeriodsWithLocationKey = async (locationKey) => {
     try {
       const hourlyForecast = await getHourlyForecastWithLocationKey(locationKey);
   
-      const morning = hourlyForecast[0].Temperature.Value;
-      const afternoon = hourlyForecast[4].Temperature.Value;
-      const evening = hourlyForecast[8].Temperature.Value;
-      const overnight = hourlyForecast[11].Temperature.Value;
+      const morning = hourlyForecast[0];
+      const afternoon = hourlyForecast[4];
+      const evening = hourlyForecast[8];
+      const overnight = hourlyForecast[11];
   
       return {
         morning,
