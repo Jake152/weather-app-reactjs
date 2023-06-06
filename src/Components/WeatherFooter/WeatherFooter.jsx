@@ -16,7 +16,7 @@ export default function WeatherFooter() {
     return (
         <div id="weather-footer-container">
             <div id="weather-footer-content">
-                <span id="app-information">Weather Applicaton</span>
+                <span id="app-information">WeatherZen Applicaton</span>
                 {renderGitHubInformation()}
             </div>
         </div>
