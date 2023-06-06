@@ -1,4 +1,4 @@
 #weather-app {
   color: white;
-  background-color: 282c34;
+  min-width: max-content;  
 }
