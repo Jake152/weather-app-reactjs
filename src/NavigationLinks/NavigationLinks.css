@@ -1,4 +1,5 @@
 #navigation-links-container {
+    flex-grow: 1;
     #navigation-links .link {
         color: #61dafb;
         margin: 1rem;
