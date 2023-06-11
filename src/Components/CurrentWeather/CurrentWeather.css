@@ -193,6 +193,7 @@
         
         #moon-phase-container {
             width: 30%;
+            padding: 1.5rem 1.5rem .5rem 1.5rem;
             #title-row {
                 display: flex;
                 align-items: center;
@@ -217,6 +218,13 @@
                 .additional-info-item:last-child {
                     border: none;
                     padding: 0rem;
+                }
+                #icon-moon-phase {
+                    display: flex;
+                    justify-content: center;
+                    .moon-icon {
+                        height: 5.5rem;
+                    }
                 }
             }
         }
@@ -274,13 +282,11 @@
             margin-bottom: 2rem;
             max-height: 67rem;
             overflow-y: overlay;
+            padding: 0rem;
     
             #title-row {
                 margin-bottom: 1rem;
-                /* display: flex;
-                justify-content: center;
-                align-items: center;
-                text-align: center; */
+                padding: 1.5rem 1.5rem 0rem 1.5rem;
                 #hourly-title {
                     font-size: 1.5rem;
                 }
@@ -291,7 +297,7 @@
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
-                /* overflow-y: overlay; */
+                padding: 0rem 1.5rem .5rem 1.5rem;;
             }
     
             .hourly-item {
@@ -308,6 +314,12 @@
                     align-items: center;
                     #hourly-temp {
                         font-size: 3rem;
+                    }
+                }
+                #percipitation-info {
+                    .weather-icon {
+                        width: 3rem;
+                        margin: 1rem;
                     }
                 }
             }

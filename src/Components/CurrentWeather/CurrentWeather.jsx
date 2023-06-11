@@ -5,6 +5,7 @@ import Spinner from 'react-bootstrap/Spinner';
 
 import './CurrentWeather.css'
 import WeatherIcons from "../../Assets/WeatherIcons/WeatherIcons";
+import MoonIcons from "../../Assets/MoonIcons/MoonIcons";
 
 export default function CurrentWeather({ latitude, longitude }) {
     const [locationData, setLocationData] = useState(null);
@@ -198,9 +199,9 @@ export default function CurrentWeather({ latitude, longitude }) {
                         <img src={weatherIconInfo(data.IconPhrase, convertTo12HourTime(data.DateTime))} className="weather-icon" />
                         <span>{data.IconPhrase}</span>
                       </div>
-                      <div id="percipitation-wind" className="hourly-item-content">
-                        <span>rain</span>
-                        <span>wind</span>
+                      <div id="percipitation-info" className="hourly-item-content">
+                        <img src={WeatherIcons.Raindrops} className="weather-icon" />
+                        <span>{data.RainProbability}%</span>
                       </div>
                     </div>
                   ))}
@@ -307,8 +308,7 @@ export default function CurrentWeather({ latitude, longitude }) {
                   <span className="data-text">{getLocalTime(oneDayWeatherData?.Moon.Set)}</span>
                 </div>
                 <div id="icon-moon-phase">
-                  {/* <img src={}/> */}
-                  <span>ICON LOCATION</span>
+                  <img src={MoonIcons.Moon_Last_Quarter} className="moon-icon"/>
                 </div>
             </div>
           </div>
