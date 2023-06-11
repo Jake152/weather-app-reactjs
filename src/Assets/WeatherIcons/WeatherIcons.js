@@ -10,6 +10,7 @@ import HeavySnow_Sleet_WintryMix from './HeavySnow_Sleet_WintryMix.png';
 import PartlyCloudy_NIGHT from './PartlyCloudy_NIGHT.png';
 import PartlyCloudy from './PartlyCloudy.png';
 import Rain from './Rain.png';
+import Raindrops from './Raindrops.png'
 import Snow from './Snow.png';
 import Sunrise from './Sunrise.png';
 import Sunset from './Sunset.png';
@@ -29,6 +30,7 @@ export default {
   PartlyCloudy_NIGHT,
   PartlyCloudy,
   Rain,
+  Raindrops,
   Snow,
   Sunrise,
   Sunset,
