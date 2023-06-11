@@ -31,6 +31,8 @@
             }
             #temp-sun-info-container {
                 display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
                 #temp-info-container {
                     padding: 0rem 0rem 1.5rem 1.5rem;
                     #temp-info {
@@ -49,8 +51,8 @@
 
                 #sunrise-sunset-info-container {
                     padding: 1.5rem 1.5rem 1.5rem 0rem;
-                    margin-left: auto;
                     display: flex;
+                    flex-wrap: wrap;
                     font-size: 1.5rem;
                     #sunrise-container {
                         display: flex;
@@ -116,7 +118,11 @@
                     padding-bottom: .5rem;
                     border-bottom: .0625rem solid white;
                     display: flex;
+                    flex-wrap: wrap;
                     justify-content: space-between;
+                    .label {
+                        margin-right: .5rem;
+                    }
                 }
                 .additional-info-item:last-child,
                 .additional-info-item:nth-last-child(2) {
