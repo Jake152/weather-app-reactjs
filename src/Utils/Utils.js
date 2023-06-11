@@ -53,6 +53,7 @@ export function getWeatherIcon(condition, hour, sunrise, sunset) {
   const dayOrNight = checkDayTime(hour, sunrise, sunset);
   if (dayOrNight === 'day') {
     switch (condition) {
+      case 'Sunny':
       case 'Clear':
       case 'Mostly clear':
         return WeatherIcons.Clear_MostlyClear;
