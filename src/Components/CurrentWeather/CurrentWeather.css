@@ -2,45 +2,94 @@
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     grid-column-gap: 2rem;
-    .current-temp-wrapper {
+
+    .section-container {
         border: .0625rem solid #3f4552;
         border-radius: .625rem;
+        background-color: #175fa4;
+        padding: 1.5rem;
+    }
+
+    .current-temp-wrapper {
         margin: 2rem 0rem;
-        overflow: hidden;
         grid-column: 1 / span 8;
-        min-width: fit-content;
+        /* min-width: fit-content; */
         #current-temp-container {
             grid-column: span 8;
             margin-bottom: 2rem;
+            padding: 0rem;
             #location-info {
                 font-size: 1.5rem;
                 /* border-bottom: .0625rem solid; */
-                padding: 1rem;
+                padding: 1.5rem;
                 /* background-color: cornflowerblue; */
                 /* background-color: dodgerblue; */
                 /* background-color: steelblue; */
                 background-color: #0d4343;
+                border-top-left-radius: .625rem;
+                border-top-right-radius: .625rem;
             }
-            #temperature-info {
-                font-size: 3rem;
-                padding: 0rem 1rem 0rem 1rem;
-                background-color: #175fa4;
-            }
-            #weather-conditions {
-                font-size: 1.5rem;
-                padding: 0rem 1rem 0rem 1rem;
-                background-color: #175fa4;
-            }
-            #high-low-temp {
-                font-size: 1.5rem;
-                padding: 0rem 1rem 1rem 1rem;
-                background-color: #175fa4;
+            #temp-sun-info-container {
+                display: flex;
+                #temp-info-container {
+                    padding: 0rem 0rem 1.5rem 1.5rem;
+                    #temp-info {
+                        font-size: 3rem;
+                        /* padding: 0rem 1.5rem 0rem 1.5rem; */
+                    }
+                    #weather-conditions {
+                        font-size: 1.5rem;
+                        /* padding: 0rem 1.5rem 0rem 1.5rem; */
+                    }
+                    #high-low-temp {
+                        font-size: 1.5rem;
+                        /* padding: 0rem 1.5rem 1.5rem 1.5rem; */
+                    }
+                }
+
+                #sunrise-sunset-info-container {
+                    padding: 1.5rem 1.5rem 1.5rem 0rem;
+                    margin-left: auto;
+                    display: flex;
+                    font-size: 1.5rem;
+                    #sunrise-container {
+                        display: flex;
+                        align-items: center;
+                        margin: 0rem 1rem;
+                        #sunrise-info {
+                            display: flex;
+                            flex-direction: column;
+                            text-align: center;
+                            justify-content: center;
+                            min-width: fit-content;
+                            margin-right: 1rem;
+                        }
+                        .sunrise-icon {
+                            margin-right: 1rem;
+                        }
+                    }
+                    #sunset-container {
+                        display: flex;
+                        align-items: center;
+                        margin: 0rem 1rem;
+                        #sunset-info {
+                            display: flex;
+                            flex-direction: column;
+                            text-align: center;
+                            justify-content: center;
+                            min-width: fit-content;
+                            margin-right: 1rem;
+                        }
+                        .sunset-icon {
+                            margin-right: 1rem;
+                        }
+                    }
+                }
             }
         }
 
         #today-weather-container {
-            background-color: #175fa4;
-            padding: 1rem;
+            margin-bottom: 2rem;
             #title-row {
                 display: flex;
                 align-items: center;
@@ -49,7 +98,6 @@
                 }
             }
             #temperature-info {
-                background-color: #175fa4;
                 margin: 1rem 0rem 2rem 0rem;
                 display: flex;
                 flex-direction: column;
@@ -77,20 +125,111 @@
                 }
             }
         }
+
+        /* #hourly-container {
+            #title-row {
+                padding-bottom: 1rem;
+                #hourly-title {
+                    font-size: 1.5rem;
+                }
+            }
+            #values-row {
+                display: flex;
+                overflow-x: overlay;
+                padding: 1rem;
+                .hourly-value {
+                    font-size: 1.5rem;
+                    min-width: 12rem;
+                    padding: 0rem 1rem;
+                    border-right: .0625rem solid white;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    text-align: center;
+                    .weather-icon {
+                        margin-top: 1rem;
+                    }
+                }
+                .hourly-value:last-child {
+                    border-right: none;
+                    padding-right: 0rem;
+                  }
+            }
+        } */
+
+        #air-quality-and-moon {
+            display: flex;
+            #air-pollen-quality-container {
+                margin-right: 2rem;
+                width: 70%;
+                #title-row {
+                    display: flex;
+                    align-items: center;
+                    margin-bottom: 1rem;
+                    #air-pollen-quality-title {
+                        font-size: 1.5rem;
+                    }
+                }
+                #additional-info-row {
+                    display: grid;
+                    grid-template-columns: repeat(2, 1fr);
+                    grid-template-rows: repeat(4, 1fr);
+                    column-gap: 2rem;
+                    row-gap: 1rem;
+                    .additional-info-item {
+                        padding-bottom: .5rem;
+                        border-bottom: .0625rem solid white;
+                        display: flex;
+                        justify-content: space-between;
+                    }
+                    .additional-info-item:last-child,
+                    .additional-info-item:nth-last-child(2) {
+                        border: none;
+                        padding: 0rem;
+                    }
+                }
+            }
+        }
+        
+        #moon-phase-container {
+            width: 30%;
+            #title-row {
+                display: flex;
+                align-items: center;
+                margin-bottom: 1rem;
+                #moon-phase-title {
+                    font-size: 1.5rem;
+                }
+            }
+            #additional-info-row {
+                /* display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: repeat(4, 1fr);
+                column-gap: 2rem;
+                row-gap: 1rem; */
+                .additional-info-item {
+                    padding-bottom: .5rem;
+                    margin-bottom: 1rem;
+                    border-bottom: .0625rem solid white;
+                    display: flex;
+                    justify-content: space-between;
+                }
+                .additional-info-item:last-child {
+                    border: none;
+                    padding: 0rem;
+                }
+            }
+        }
     }
 
     .forecast-wrapper {
-        border: .0625rem solid #3f4552;
-        border-radius: 10px;
         margin: 2rem 0rem;
-        padding: 1rem;
-        overflow: hidden;
-        background-color: #175fa4;
         min-width: fit-content;
         grid-column: 9 / span 4;
-        #forecast-container {
+        /* #forecast-container {
             display: grid;
             grid-column: span 4;
+            margin-bottom: 2rem;
     
             #title-row {
                 display: flex;
@@ -128,7 +267,83 @@
                     font-size: 3rem;
                 }
             }
+        } */
+        #hourly-container {
+            display: grid;
+            grid-column: span 4;
+            margin-bottom: 2rem;
+            max-height: 67rem;
+            overflow-y: overlay;
+    
+            #title-row {
+                margin-bottom: 1rem;
+                /* display: flex;
+                justify-content: center;
+                align-items: center;
+                text-align: center; */
+                #hourly-title {
+                    font-size: 1.5rem;
+                }
+            }
+              
+            #values-row {
+                display: flex;            
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                /* overflow-y: overlay; */
+            }
+    
+            .hourly-item {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 1rem 0rem;
+                width: 100%;
+                border-top: .0625rem solid;
+                font-size: 1.5rem;
+                .hourly-item-content {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    #hourly-temp {
+                        font-size: 3rem;
+                    }
+                }
+            }
+            .forecast-item:last-child {
+                border-top: none;
+            }
         }
+
+        /* #air-pollen-quality-container {
+            #title-row {
+                display: flex;
+                align-items: center;
+                margin-bottom: 1rem;
+                #air-pollen-quality-title {
+                    font-size: 1.5rem;
+                }
+            }
+            #additional-info-row {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: repeat(4, 1fr);
+                column-gap: 2rem;
+                row-gap: 1rem;
+                .additional-info-item {
+                    padding-bottom: .5rem;
+                    border-bottom: .0625rem solid white;
+                    display: flex;
+                    justify-content: space-between;
+                }
+                .additional-info-item:last-child,
+                .additional-info-item:nth-last-child(2) {
+                    border: none;
+                    padding: 0rem;
+                }
+            }
+        } */
     }
 }
 

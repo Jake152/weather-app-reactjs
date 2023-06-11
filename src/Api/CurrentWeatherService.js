@@ -49,20 +49,8 @@ export const getOneDayWeatherWithLocationKey = async (locationKey) => {
       return null;
     }
   };
-  
-export const getHourlyForecastWithLocationKey = async (locationKey) => {
-    try {
-      const response = await axios.get(
-        `http://dataservice.accuweather.com/forecasts/v1/hourly/12hour/${locationKey}?apikey=${API_KEY}&details=true`
-      );
-      return response.data;
-    } catch (error) {
-      console.log(error);
-      return null;
-    }
-  };
 
-export const getHourForecastWithLocationKey = async (locationKey) => {
+export const get1HourForecastWithLocationKey = async (locationKey) => {
     try {
       const response = await axios.get(
         `http://dataservice.accuweather.com/forecasts/v1/hourly/1hour/${locationKey}?apikey=${API_KEY}&details=true`
@@ -74,9 +62,21 @@ export const getHourForecastWithLocationKey = async (locationKey) => {
     }
   };
 
+export const get12HourForecastWithLocationKey = async (locationKey) => {
+    try {
+      const response = await axios.get(
+        `http://dataservice.accuweather.com/forecasts/v1/hourly/12hour/${locationKey}?apikey=${API_KEY}&details=true`
+      );
+      return response.data;
+    } catch (error) {
+      console.log(error);
+      return null;
+    }
+  };
+
 export const getOneDayWeatherPeriodsWithLocationKey = async (locationKey) => {
     try {
-      const hourlyForecast = await getHourlyForecastWithLocationKey(locationKey);
+      const hourlyForecast = await get12HourForecastWithLocationKey(locationKey);
   
       const morning = hourlyForecast[0];
       const afternoon = hourlyForecast[4];
@@ -94,4 +94,3 @@ export const getOneDayWeatherPeriodsWithLocationKey = async (locationKey) => {
       return null;
     }
   };
-  
