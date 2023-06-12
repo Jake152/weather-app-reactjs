@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getCurrentWeatherByCoordinates, getCurrentWeatherWithLocationKey, getOneDayWeatherWithLocationKey, getOneDayWeatherPeriodsWithLocationKey, get12HourForecastWithLocationKey } from "../../Api/CurrentWeatherService";
-import { convertToTime, getWeatherIcon } from "../../Utils/Utils";
+import { convertToTime, getMoonPhaseIcon, getWeatherIcon } from "../../Utils/Utils";
 import Spinner from 'react-bootstrap/Spinner';
 
 import './CurrentWeather.css'
@@ -16,6 +16,7 @@ export default function CurrentWeather({ latitude, longitude }) {
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
 
+    // Format HH PM/AM
     const convertTo12HourTime = (date) => {
       const hour12Format = new Date(date).toLocaleString("en-US", {
         hour: "numeric",
@@ -196,7 +197,7 @@ export default function CurrentWeather({ latitude, longitude }) {
                         <span>{data.Temperature.Value}°</span>
                       </div>
                       <div id="icon-condition" className="hourly-item-content">
-                        <img src={weatherIconInfo(data.IconPhrase, convertTo12HourTime(data.DateTime))} className="weather-icon" />
+                        <img src={weatherIconInfo(data.IconPhrase, data.DateTime)} className="weather-icon" />
                         <span>{data.IconPhrase}</span>
                       </div>
                       <div id="percipitation-info" className="hourly-item-content">
@@ -308,7 +309,7 @@ export default function CurrentWeather({ latitude, longitude }) {
                   <span className="data-text">{getLocalTime(oneDayWeatherData?.Moon.Set)}</span>
                 </div>
                 <div id="icon-moon-phase">
-                  <img src={MoonIcons.Moon_Last_Quarter} className="moon-icon"/>
+                  <img src={getMoonPhaseIcon(oneDayWeatherData?.Moon.Phase)} className="moon-icon"/>
                 </div>
             </div>
           </div>
