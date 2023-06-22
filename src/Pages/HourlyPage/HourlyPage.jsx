@@ -68,7 +68,6 @@ export default function TodayPage({ latitude, longitude }) {
                           <img src={WeatherIcons.Raindrops} className="weather-icon" />
                           <span>{data.RainProbability}%</span>
                         </div>
-                        {/* ADD WIND  */}
                       </a>
                     </div>
                   ))}
@@ -96,14 +95,6 @@ export default function TodayPage({ latitude, longitude }) {
                   <span className='value'>{hour12Data[selectedHour]?.RealFeelTemperature.Value}°</span>
                 </div>
               </div>
-              {/* <div id="actual-temperature-info" className='temperature-info-item'>
-                <span className='text'>Actual</span>
-                <span className='value'>{hour12Data[selectedHour]?.Temperature.Value}°</span>
-              </div>
-              <div id='feels-like-temperature-info' className='temperature-info-item'>
-                <span className='text'>Feels Like</span>
-                <span className='value'>{hour12Data[selectedHour]?.RealFeelTemperature.Value}°</span>
-              </div> */}
               <div id='condition-and-rain-icon'>
                 <div id='icon-condition' className='temperature-info-item'>
                   <span className='text'>{hour12Data[selectedHour]?.IconPhrase}</span>
@@ -114,10 +105,6 @@ export default function TodayPage({ latitude, longitude }) {
                   <img src={WeatherIcons.Raindrops} className="weather-icon" />
                 </div>
               </div>
-              {/* <div id='icon-condition' className='temperature-info-item'>
-                <span className='text'>{hour12Data[selectedHour]?.IconPhrase}</span>
-                <img src={weatherIconInfo(hour12Data[selectedHour]?.IconPhrase, hour12Data[selectedHour]?.DateTime)} className="weather-icon" />
-              </div> */}
             </div>
           </div>
         )}
@@ -173,8 +160,6 @@ export default function TodayPage({ latitude, longitude }) {
         )}
       </>
     );
-
-    // MAYBE DO A TEMP SECTION, PERCIPITATION SECTION (RAIN, SNOW, ICE), WIND SECTION
 
     const renderPrecipitationSection = () => (
       <>

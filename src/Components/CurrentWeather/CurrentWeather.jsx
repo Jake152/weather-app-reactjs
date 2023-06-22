@@ -3,13 +3,11 @@ import {
   getCurrentWeatherByCoordinates, 
   getCurrentWeatherWithLocationKey, 
   getOneDayWeatherWithLocationKey, 
-  getOneDayWeatherPeriodsWithLocationKey, 
   get12HourForecastWithLocationKey,
 } from "../../Api/CurrentWeatherService";
 import { convertToTime, formatDate, getMoonPhaseIcon, getWeatherIcon } from "../../Utils/Utils";
 import Spinner from 'react-bootstrap/Spinner';
 import WeatherIcons from "../../Assets/WeatherIcons/WeatherIcons";
-import MoonIcons from "../../Assets/MoonIcons/MoonIcons";
 
 import './CurrentWeather.css'
 
@@ -17,7 +15,6 @@ export default function CurrentWeather({ latitude, longitude }) {
     const [locationData, setLocationData] = useState(null);
     const [currentWeatherData, setCurrentWeatherData] = useState(null);
     const [oneDayWeatherData, setOneDayWeatherData] = useState(null);
-    // const [forecastPeriodData, setForecastPeriodData] = useState(null);
     const [hour12Data, setHour12Data] = useState(null);
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
@@ -73,25 +70,6 @@ export default function CurrentWeather({ latitude, longitude }) {
                           </div>
                       </div>
                   </div>
-                  {/* <div id="temp-info">
-                      <div id="temperature-info">
-                          {currentWeatherData?.Temperature.Imperial.Value}°
-                      </div>
-                      <div id="weather-conditions">
-                          {currentWeatherData?.WeatherText}
-                      </div>
-                      <div id="high-low-temp">
-                          High {oneDayWeatherData?.Temperature.Maximum.Value}° - Low {oneDayWeatherData?.Temperature.Minimum.Value}°
-                      </div>
-                  </div>
-                  <div id="sunrise-sunset-info">
-                      <div id="sunrise">
-                          Sunrise
-                      </div>
-                      <div id="sunset">
-                          Sunset
-                      </div>
-                  </div> */}
                 </div>
             )}
         </>
@@ -155,32 +133,6 @@ export default function CurrentWeather({ latitude, longitude }) {
       </>
     );
 
-    // const render12HourSection = () => (
-    //   <>
-    //     {hour12Data && (
-    //       <div id="hourly-container" className="section-container">
-    //         {hour12Data && (
-    //           <>
-    //             <div id="title-row">
-    //               <span id="hourly-title">Hourly Forecast</span>
-    //             </div>
-    //             <div id="values-row">
-    //               {hour12Data.slice(0,8).map((data, index) => (
-    //                 <div key={index} className="hourly-value">
-    //                   <span>{convertTo12HourTime(data.DateTime)}</span>
-    //                   <span>{data.Temperature.Value}°</span>
-    //                   <span>{data.IconPhrase}</span>
-    //                   <img src={getWeatherIcon(data.IconPhrase)} className="weather-icon" />
-    //                 </div>
-    //               ))}
-    //             </div>
-    //           </>
-    //         )}
-    //       </div>
-    //     )}
-    //   </>
-    // );
-
     const weatherIconInfo = (condition, hour) => {
       const sunRise = getLocalTime(oneDayWeatherData?.Sun.Rise);
       const sunSet = getLocalTime(oneDayWeatherData?.Sun.Set);
@@ -195,7 +147,6 @@ export default function CurrentWeather({ latitude, longitude }) {
                   <span id="hourly-title">Hourly Forecast</span>
                 </div>
                 <div id="values-row">
-                  {/* {hour12Data.slice(0, 6).map((data, index) => ( */}
                   {hour12Data.map((data, index) => (
                     <div key={index} className="hourly-item">
                       <div id="time-temp" className="hourly-item-content">
@@ -215,28 +166,6 @@ export default function CurrentWeather({ latitude, longitude }) {
                 </div>
             </div>
           )}
-          
-        {/* {forecastPeriodData && locationData && (
-          <div id="forecast-container" className="section-container">
-            <div id="title-row">
-              <span id="forecast-title">Today's Forecast for {locationData?.LocalizedName}, {locationData?.AdministrativeArea.ID}</span> 
-            </div>
-            <div id="values-row">
-              <div className="forecast-item" id="morning-temp">
-                <span className="label">Morning</span> <span className="value">{forecastPeriodData?.morning.Temperature.Value}°</span>
-              </div>
-              <div className="forecast-item" id="afternoon-temp">
-                <span className="label">Afternoon</span> <span className="value">{forecastPeriodData?.afternoon.Temperature.Value}°</span>
-              </div>
-              <div className="forecast-item" id="evening-temp">
-                <span className="label">Evening</span> <span className="value">{forecastPeriodData?.evening.Temperature.Value}°</span>
-              </div>
-              <div className="forecast-item" id="overnight-temp">
-                <span className="label">Overnight</span> <span className="value">{forecastPeriodData?.overnight.Temperature.Value}°</span>
-              </div>
-            </div>
-          </div>
-        )} */}
       </>
     );
 
@@ -360,13 +289,11 @@ export default function CurrentWeather({ latitude, longitude }) {
           const locationKey = locationInformation.Key
           const currentWeather = await getCurrentWeatherWithLocationKey(locationKey);
           const oneDayWeather = await getOneDayWeatherWithLocationKey(locationKey);
-          // const forecastData = await getOneDayWeatherPeriodsWithLocationKey(locationKey);
           const hour12Data = await get12HourForecastWithLocationKey(locationKey);
   
           if (currentWeather && oneDayWeather && hour12Data) {
             setCurrentWeatherData(currentWeather);
             setOneDayWeatherData(oneDayWeather);
-            // setForecastPeriodData(forecastData);
             setHour12Data(hour12Data);
           } else {
             setError('Error fetching weather data');
@@ -381,15 +308,6 @@ export default function CurrentWeather({ latitude, longitude }) {
         setIsLoading(false);
       }
   };
-
-    useEffect(() => {
-        console.log('Location Data', locationData);
-        console.log('Location Key', locationData?.Key)
-        console.log('Current Weather Data', currentWeatherData);
-        console.log('One Day Weather', oneDayWeatherData);
-        // console.log('Forecast Data', forecastPeriodData);
-        console.log('hourly data', hour12Data);
-    }, [locationData, currentWeatherData, hour12Data]);
 
     useEffect(() => {
       let isMounted = true;

@@ -13,18 +13,13 @@
     .current-temp-wrapper {
         margin: 2rem 0rem;
         grid-column: 1 / span 8;
-        /* min-width: fit-content; */
         #current-temp-container {
             grid-column: span 8;
             margin-bottom: 2rem;
             padding: 0rem;
             #location-info {
                 font-size: 1.5rem;
-                /* border-bottom: .0625rem solid; */
                 padding: 1.5rem;
-                /* background-color: cornflowerblue; */
-                /* background-color: dodgerblue; */
-                /* background-color: steelblue; */
                 background-color: #0d4343;
                 border-top-left-radius: .625rem;
                 border-top-right-radius: .625rem;
@@ -37,15 +32,12 @@
                     padding: 0rem 0rem 1.5rem 1.5rem;
                     #temp-info {
                         font-size: 3rem;
-                        /* padding: 0rem 1.5rem 0rem 1.5rem; */
                     }
                     #weather-conditions {
                         font-size: 1.5rem;
-                        /* padding: 0rem 1.5rem 0rem 1.5rem; */
                     }
                     #high-low-temp {
                         font-size: 1.5rem;
-                        /* padding: 0rem 1.5rem 1.5rem 1.5rem; */
                     }
                 }
 
@@ -132,37 +124,6 @@
             }
         }
 
-        /* #hourly-container {
-            #title-row {
-                padding-bottom: 1rem;
-                #hourly-title {
-                    font-size: 1.5rem;
-                }
-            }
-            #values-row {
-                display: flex;
-                overflow-x: overlay;
-                padding: 1rem;
-                .hourly-value {
-                    font-size: 1.5rem;
-                    min-width: 12rem;
-                    padding: 0rem 1rem;
-                    border-right: .0625rem solid white;
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    text-align: center;
-                    .weather-icon {
-                        margin-top: 1rem;
-                    }
-                }
-                .hourly-value:last-child {
-                    border-right: none;
-                    padding-right: 0rem;
-                  }
-            }
-        } */
-
         #air-quality-and-moon {
             display: flex;
             #air-pollen-quality-container {
@@ -213,11 +174,6 @@
                 }
             }
             #additional-info-row {
-                /* display: grid;
-                grid-template-columns: repeat(2, 1fr);
-                grid-template-rows: repeat(4, 1fr);
-                column-gap: 2rem;
-                row-gap: 1rem; */
                 .additional-info-item {
                     padding-bottom: .5rem;
                     margin-bottom: 1rem;
@@ -248,48 +204,6 @@
         margin: 2rem 0rem;
         min-width: fit-content;
         grid-column: 9 / span 4;
-        /* #forecast-container {
-            display: grid;
-            grid-column: span 4;
-            margin-bottom: 2rem;
-    
-            #title-row {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                text-align: center;
-            }
-              
-            #values-row {
-                display: flex;            
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-            }
-    
-            #forecast-title {
-                font-size: 1.5rem;
-            }
-    
-            #afternoon-temp, #evening-temp, #overnight-temp {
-                border-top: .0625rem solid;
-            }
-    
-            .forecast-item {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                padding: 1rem 0rem;
-                width: 100%;
-    
-                .label {
-                    font-size: 1.5rem;
-                }
-                .value {
-                    font-size: 3rem;
-                }
-            }
-        } */
         #hourly-container {
             display: grid;
             grid-column: span 4;
@@ -343,35 +257,6 @@
                 }
             }
         }
-
-        /* #air-pollen-quality-container {
-            #title-row {
-                display: flex;
-                align-items: center;
-                margin-bottom: 1rem;
-                #air-pollen-quality-title {
-                    font-size: 1.5rem;
-                }
-            }
-            #additional-info-row {
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
-                grid-template-rows: repeat(4, 1fr);
-                column-gap: 2rem;
-                row-gap: 1rem;
-                .additional-info-item {
-                    padding-bottom: .5rem;
-                    border-bottom: .0625rem solid white;
-                    display: flex;
-                    justify-content: space-between;
-                }
-                .additional-info-item:last-child,
-                .additional-info-item:nth-last-child(2) {
-                    border: none;
-                    padding: 0rem;
-                }
-            }
-        } */
     }
 }
 
