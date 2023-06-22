@@ -13,13 +13,20 @@
         justify-content: space-between;
         margin: 0 auto;
 
-        .github-link {
-            color: #61dafb;
-            text-decoration: none;
+        #github-information {
+            margin-left: 1rem;
+            .github-link {
+                color: #61dafb;
+                text-decoration: none;
+            }
+            .github-link:hover {
+                color: #61dafb;
+                text-decoration: underline;
+            }
         }
-        .github-link:hover {
-            color: #61dafb;
-            text-decoration: underline;
+
+        #app-information {
+            margin-right: 1rem;
         }
     }
 }

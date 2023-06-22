@@ -10,7 +10,7 @@ export default function WeatherHeader() {
             <div id="weather-header-content">
                 <img id="weather-zen-logo" src={WeatherZenLogo} alt="WeatherZen Logo" className="logo" />
                 <NavigationLinks />
-                <span>WeatherZen Header</span>
+                <span id="header-info">WeatherZen Header</span>
             </div>
         </div>
     )
