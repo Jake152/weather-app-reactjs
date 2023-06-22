@@ -1,11 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { getCurrentWeatherByCoordinates, getCurrentWeatherWithLocationKey, getOneDayWeatherWithLocationKey, getOneDayWeatherPeriodsWithLocationKey, get12HourForecastWithLocationKey } from "../../Api/CurrentWeatherService";
-import { convertToTime, getMoonPhaseIcon, getWeatherIcon } from "../../Utils/Utils";
+import { 
+  getCurrentWeatherByCoordinates, 
+  getCurrentWeatherWithLocationKey, 
+  getOneDayWeatherWithLocationKey, 
+  getOneDayWeatherPeriodsWithLocationKey, 
+  get12HourForecastWithLocationKey,
+} from "../../Api/CurrentWeatherService";
+import { convertToTime, formatDate, getMoonPhaseIcon, getWeatherIcon } from "../../Utils/Utils";
 import Spinner from 'react-bootstrap/Spinner';
-
-import './CurrentWeather.css'
 import WeatherIcons from "../../Assets/WeatherIcons/WeatherIcons";
 import MoonIcons from "../../Assets/MoonIcons/MoonIcons";
+
+import './CurrentWeather.css'
 
 export default function CurrentWeather({ latitude, longitude }) {
     const [locationData, setLocationData] = useState(null);
@@ -36,7 +42,7 @@ export default function CurrentWeather({ latitude, longitude }) {
             {locationData && currentWeatherData && oneDayWeatherData && (
                 <div id="current-temp-container" className="section-container">
                   <div id="location-info">
-                      {locationData?.LocalizedName}, {locationData?.AdministrativeArea.LocalizedName} as of {convertToTime(currentWeatherData?.LocalObservationDateTime)} {locationData?.TimeZone.Code}
+                      {formatDate(oneDayWeatherData?.Date)} - {locationData?.LocalizedName}, {locationData?.AdministrativeArea.LocalizedName} as of {convertToTime(currentWeatherData?.LocalObservationDateTime)} {locationData?.TimeZone.Code}
                   </div>
                   <div id="temp-sun-info-container">
                       <div id="temp-info-container">
