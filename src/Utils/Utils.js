@@ -1,7 +1,7 @@
 import MoonIcons from "../Assets/MoonIcons/MoonIcons";
 import WeatherIcons from "../Assets/WeatherIcons/WeatherIcons";
 
-export function getCurrentTime() {
+export const getCurrentTime = () => {
     const currentDate = new Date();
     const options = {
       hour: 'numeric',
@@ -12,9 +12,18 @@ export function getCurrentTime() {
     const formattedTime = currentDate.toLocaleString('en-US', options);
     return formattedTime + ' CST';
 }
+
+// Format "Month" ##
+export const formatDate = (dateString) => {
+  const date = new Date(dateString);
+  const options = { month: 'long', day: 'numeric' };
+  const formattedDate = new Intl.DateTimeFormat('en-US', options).format(date);
+
+  return formattedDate;
+};
   
 // Format HH:MM PM/AM
-export function convertToTime(timestamp) {
+export const convertToTime = (timestamp) => {
     const date = new Date(timestamp);
     const options = {
       hour: 'numeric',
@@ -42,18 +51,16 @@ const checkDayTime = (hour, sunrise, sunset) => {
   const sunsetTime = parseHour(sunset);
   const currentHour = parseHour(hour);
 
-  if (currentHour > sunriseTime && currentHour < sunsetTime) {
+  if (currentHour >= sunriseTime && currentHour <= sunsetTime) {
     return 'day';
   } else {
     return 'night';
   }
 }
 
-
 export const getWeatherIcon = (condition, hour, sunrise, sunset) => {
   const formatHour = convertToTime(hour);
   const dayOrNight = checkDayTime(formatHour, sunrise, sunset);
-  console.log(formatHour, dayOrNight);
   if (dayOrNight === 'day') {
     switch (condition) {
       case 'Sunny':
@@ -73,6 +80,8 @@ export const getWeatherIcon = (condition, hour, sunrise, sunset) => {
       case 'Partly sunny w/ t-storms':
       case 'Thunderstorms':
         return WeatherIcons.Thunderstorm;
+      case 'Hazy sunshine':
+        return WeatherIcons.Haze;
       default:
     }
   }
@@ -101,7 +110,9 @@ export const getMoonPhaseIcon = (phase) => {
     case 'Last':
       return MoonIcons.Moon_Last_Quarter;
     case 'WaningCrescent':
-      return MoonIcons.Waning_Crescent_Moon;
+      return MoonIcons.Moon_Waning_Crescent;
+    case 'WaxingCrescent': 
+      return MoonIcons.Moon_Waxing_Crescent;
   default:
   }
 }
