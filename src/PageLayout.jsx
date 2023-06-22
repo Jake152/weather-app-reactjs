@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import HomePage from './Pages/HomePage/HomePage';
+import TodayPage from './Pages/TodayPage/TodayPage';
+import HourlyPage from './Pages/HourlyPage/HourlyPage';
 import WeatherHeader from './Components/WeatherHeader/WeatherHeader';
 import WeatherFooter from './Components/WeatherFooter/WeatherFooter';
 import LocationPermissionModal from './Components/LocationPermissionModal/LocationPermissionModal';
@@ -73,7 +74,8 @@ export default function PageLayout() {
             <div id='main-content'>
               {!showModal && (
                 <Routes>
-                  <Route path='/' element={<HomePage latitude={latitude} longitude={longitude} />} />
+                  <Route path='/' element={<TodayPage latitude={latitude} longitude={longitude} />} />
+                  <Route path='/hourly' element={<HourlyPage latitude={latitude} longitude={longitude} />} />
                 </Routes>
               )}
             </div>
