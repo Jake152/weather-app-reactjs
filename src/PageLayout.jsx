@@ -13,21 +13,17 @@ export default function PageLayout() {
   const [latitude, setLatitude] = useState(localStorage.getItem('latitude') || '');
   const [longitude, setLongitude] = useState(localStorage.getItem('longitude') || '');
   const [currentGeolocationAccess, setCurrentGeolocationAccess] = useState(
-    // localStorage.getItem('currentGeolocationAccess') === 'true' || false
     sessionStorage.getItem('currentGeolocationAccess') === 'true' || false
   );
   const [showModal, setShowModal] = useState(
-    // localStorage.getItem('currentGeolocationAccess') !== 'true'
     sessionStorage.getItem('currentGeolocationAccess') !== 'true'
   );
 
   useEffect(() => {
-    // localStorage.setItem('currentGeolocationAccess', currentGeolocationAccess);
     sessionStorage.setItem('currentGeolocationAccess', currentGeolocationAccess);
   }, [currentGeolocationAccess]);
 
   useEffect(() => {
-    // localStorage.setItem('showModal', showModal);
     sessionStorage.setItem('showModal', showModal);
   }, [showModal]);
 
@@ -38,10 +34,7 @@ export default function PageLayout() {
           const latitude = position.coords.latitude;
           const longitude = position.coords.longitude;
   
-          // Save latitude and longitude to localStorage
-          // localStorage.setItem('latitude', latitude);
           sessionStorage.setItem('latitude', latitude);
-          // localStorage.setItem('longitude', longitude);
           sessionStorage.setItem('longitude', longitude);
   
           setLatitude(latitude);
@@ -51,7 +44,6 @@ export default function PageLayout() {
         },
         (error) => {
           console.error(error);
-          // Handle any errors that occur while getting the user's location
         }
       );
     } else {
