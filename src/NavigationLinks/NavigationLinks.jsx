@@ -10,10 +10,10 @@ export default function NavigationLinks() {
     const renderNavigationLinks = () => (
         <nav id="navigation-links" >
             <Link className="link" to="/">
-                Home
+                Today
             </Link>
-            <Link className="link" to="/today"> 
-                Forecast
+            <Link className="link" to="/hourly"> 
+                Hourly
             </Link>
         </nav>
     );
