@@ -14,11 +14,11 @@ export default function LocationPermissionModal({ showModal, handleAllowLocation
             keyboard={false}
         >
             <Modal.Header>
-                <Modal.Title id="modal-title">Weather App Location Request</Modal.Title>
+                <Modal.Title id="modal-title">WeatherZen Location Request</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <h1 id="modal-body-header">Can this application access your current location?</h1>
-                <p id="modal-body-content">Please select one of the following options to continue</p>
+                <h1 id="modal-body-header">Allow "WeatherZen" access your current location?</h1>
+                <p id="modal-body-content">Please select one of the following options to continue.</p>
             </Modal.Body>
             <Modal.Footer>
                 <Button variant="primary" onClick={handleAllowLocationAccess}>
